@@ -16,14 +16,16 @@ Note: Make Sure Add Your Email And Password ( Required In mega.js ) Before Runni
 
 ## OTHER PROJECTS:
 
-- [MALVIN XD](https://github.com/kingmalvn/MALVIN-XD)
-- [JINWOO-V2](https://github.com/kingmalvn/Jinwoo-v2)
-- [JINWOO-V3](https://github.com/kingmalvn/Jinwoo-v3)
-- [JINWOO-V4](https://github.com/kingmalvn/Jinwoo-v4)
-- [TELEGRAM BOT](https://github.com/kingmalvn/malvin-xd-bot#readme)
+- [MALVIN XD](https://github.com/XdKing2/MALVIN-XD)
+
+- [JINWOO-V3](https://github.com/XdKing2/Jinwoo-v3)
+  
+- [JINWOO-V4](https://github.com/XdKing2/Jinwoo-v4)
+  
+- [TELEGRAM BOT](https://github.com/XdKing2/malvin-xd-bot#readme)
 
 
 
-| [![Malvin King](https://github.com/kingmalvn.png?size=100)](https://github.com/kingmalvn) |
+| [![Malvin King](https://github.com/XdKing2.png?size=100)](https://github.com/XdKing2) |
 | --- |
 
