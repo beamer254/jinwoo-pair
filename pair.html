@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pair with Me</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at top, #0f0f0f, #000000);
+      color: #00ff99;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .box {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 25px 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #00ff99;
+      text-align: center;
+      width: 320px;
+    }
+
+    .box h3 {
+      color: #00ffcc;
+      margin-bottom: 10px;
+    }
+
+    .box h6 {
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .input-container {
+      display: flex;
+      background: #111;
+      border: 2px solid #00ffcc;
+      border-radius: 1rem;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .input-container input {
+      flex: 1;
+      padding: 1rem;
+      border: none;
+      outline: none;
+      background: #1a1a1a;
+      color: #00ff99;
+      font-size: 1rem;
+    }
+
+    .input-container button {
+      background: #00ff99;
+      color: #000;
+      font-weight: bold;
+      text-transform: uppercase;
+      border: none;
+      padding: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .input-container button:hover {
+      background: #00ffaa;
+    }
+
+    #waiting-message {
+      color: #ffcc00;
+      margin-top: 15px;
+      display: block;
+    }
+
+    #pair {
+      margin-top: 15px;
+    }
+
+    #copy {
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    #copy:hover {
+      color: #00ccff;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 500px) {
+      .box {
+        width: 90%;
+      }
+
+      .input-container {
+        flex-direction: column;
+      }
+
+      .input-container input, .input-container button {
+        border-radius: 0;
+        width: 100%;
+      }
+
+      .input-container button {
+        border-top: 1px solid #00ffaa;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <i class="fas fa-user fa-2x"></i>
+      <h3>© Jinwoo-Pair</h3>
+      <h6>Enter your number with a country code</h6>
+
+      <div class="input-container">
+        <input type="number" id="number" placeholder="263714757xxx" />
+        <button id="submit">Submit</button>
+      </div>
+
+      <a id="waiting-message" style="display: none;">Please wait for some time</a>
+      <main id="pair"></main>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+  <script>
+    let a = document.getElementById("pair");
+    let b = document.getElementById("submit");
+    let c = document.getElementById("number");
+
+    async function Copy() {
+      let text = document.getElementById("copy").innerText;
+      let obj = document.getElementById("copy");
+      await navigator.clipboard.writeText(obj.innerText.replace('CODE: ', ''));
+      obj.innerText = "COPIED";
+      obj.style = "color:#00ffff;font-weight:bold;";
+      setTimeout(() => {
+        obj.innerText = text;
+        obj.style = "color:#ff5555;font-weight:bold;";
+      }, 500);
+    }
+
+    b.addEventListener("click", async (e) => {
+      e.preventDefault();
+      if (!c.value) {
+        a.innerHTML = '<p style="color:#ff5555;font-weight:bold">Enter your WhatsApp number with a country code</p>';
+        return;
+      }
+
+      if (c.value.replace(/[^0-9]/g, "").length < 11) {
+        a.innerHTML = '<p style="color:#ff5555;font-weight:bold">Invalid number format</p>';
+        return;
+      }
+
+      const bc = c.value.replace(/[^0-9]/g, "");
+      let bb = "", bbc = "";
+      bc.split('').forEach((a, i) => {
+        bbc += a;
+        bb += a;
+        if (bbc.length == 3 || bbc.length == 8) bb += " ";
+      });
+
+      c.type = "text";
+      c.value = "+" + bb;
+      c.style = "color:#00ffcc;font-size:20px";
+
+      a.innerHTML = '<p style="color:#ffcc00;font-weight:bold">Please wait for some time...</p>';
+      
+      try {
+        let { data } = await axios(`/code?number=${bc}`);
+        let code = data.code || "Service Unavailable";
+        a.innerHTML = `<p id="copy" onclick="Copy()" style="color:#ff5555;font-weight:bold;font-size:18px;">CODE: <span style="color:#00ff99">${code}</span></p>`;
+      } catch (err) {
+        a.innerHTML = '<p style="color:red;font-weight:bold">An error occurred. Please try again.</p>';
+      }
+    });
+  </script>
+</body>
+</html>
