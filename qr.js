@@ -16,21 +16,17 @@ const MESSAGE = process.env.MESSAGE ||  `
 *SESSION GENERATED SUCCESSFULY* ✅
 
 > *Gɪᴠᴇ ᴀ ꜱᴛᴀʀ ᴛᴏ ʀᴇᴘᴏ ꜰᴏʀ ᴄᴏᴜʀᴀɢᴇ* 🌟
-https://github.com/XdKing2/Jinwoo-v4 
-
+ 
+https://github.com/beamer254/BEAMER-XMD-
 > *Tᴇʟᴇɢʀᴀᴍ Gʀᴏᴜᴘ* 🌟
-https://t.me/malvintech
+https://t.me/techlimite
 
 > *WʜᴀᴛsAᴘᴘ ᴄʜᴇɴɴᴀʟ* 🌟
- https://whatsapp.com/channel/0029VbA6MSYJUM2TVOzCSb2A
-
-> *Yᴏᴜ-ᴛᴜʙᴇ ᴛᴜᴛᴏʀɪᴀʟꜱ* 🌟 
-https://youtube.com/@malvintech2 
 
 > *ɢɪᴛʜᴜʙ* 🌟
-http://GitHub.com/XdKing2 
+http://GitHub.com/beamer254
 
-*JINWOO-V4--WHATTSAPP-BOT* 🥀
+*BEAMER XMD--WHATTSAPP-BOT* 🥀
 `
 
 
